@@ -1,0 +1,17 @@
+# This file is part of the CampaignChain package.
+#
+# (c) Sandro Groganz <sandro@campaignchain.com>
+#
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+
+hooks:
+    campaignchain-due:
+        display_name: Due Hook
+        identifier: due
+        services:
+            form: campaignchain.hook.form.type.campaignchain.due
+            entity: campaignchain.hook.campaignchain.due
+            event_subscriber: campaignchain.hook.listener.campaignchain.due
+        label: Due
+        type: trigger
