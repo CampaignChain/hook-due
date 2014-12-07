@@ -13,5 +13,14 @@
     ],
     "autoload": {
         "psr-4": { "CampaignChain\\Hook\\DueBundle\\": "" }
+    },
+    "extra": {
+        "campaignchain": {
+            "kernel": {
+                "classes": [
+                    "CampaignChain\\Hook\\DueBundle\\CampaignChainHookDueBundle"
+                ]
+            }
+        }
     }
 }
