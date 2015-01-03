@@ -87,6 +87,8 @@ class DueType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'constraints' => array(),
+                'model_timezone' => 'UTC',
+                'view_timezone' => $this->datetime->getUserTimezone(),
                 'pickerOptions' => array(
                     'format' => $this->datetime->getUserDatetimeFormat('datepicker'),
                     'weekStart' => 0,
@@ -122,7 +124,7 @@ class DueType extends AbstractType
     {
         $resolver
             ->setDefaults([
-                'validation_groups' => false
+                'validation_groups' => false,
             ]);
     }
 
