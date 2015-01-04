@@ -47,10 +47,9 @@ class DueService implements HookServiceTriggerInterface
     }
 
     public function processHook($entity, $hook){
-        // TODO: Remove this hack for validation issue for YMC demo.
+        // TODO: Remove this hack to fix validation issue.
         if(!$hook->getStartDate()){
-            $datetimeUtil = $this->container->get('campaignchain.core.util.datetime');
-            $now = $datetimeUtil->setUserTimezone(new \DateTime('now'));
+            $now = new \DateTime('now', new \DateTimeZone($hook->getTimezone()));
             $hook->setStartDate($now);
         }
 
@@ -109,7 +108,7 @@ class DueService implements HookServiceTriggerInterface
                 $method = 'set'.Inflector::classify($property);
                 if($method == 'setDate' && !is_object($value) && !$value instanceof \DateTime){
                     // TODO: De-localize the value and change from user format to ISO8601.
-                    $value = new \DateTime($value);
+                    $value = new \DateTime($value, new \DateTimeZone($hookData['timezone']));
                 }
                 $hook->$method($value);
             }

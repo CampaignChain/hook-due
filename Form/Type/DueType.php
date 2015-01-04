@@ -117,6 +117,9 @@ class DueType extends AbstractType
                         'append' => '<span class="fa fa-calendar">',
                     )
                 )
+            ))
+            ->add('timezone', 'hidden', array(
+                'data' => $this->datetime->getUserTimezone(),
             ));
     }
 

@@ -14,6 +14,8 @@ class Due
 {
     protected $date;
 
+    protected $timezone = 'UTC';
+
     /**
      * Set date
      *
@@ -35,6 +37,29 @@ class Due
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set timezone
+     *
+     * @param string $timezone
+     * @return Due
+     */
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Get timezone
+     *
+     * @return string
+     */
+    public function getTimezone()
+    {
+        return $this->timezone;
     }
 
     /**
