@@ -94,7 +94,6 @@ class DueType extends AbstractType
                     'weekStart' => 0,
                     'startDate' => $startDatePicker,
                     'endDate' => $endDatePicker,
-                    'daysOfWeekDisabled' => '0,6',
                     'autoclose' => true,
                     'startView' => 'month',
                     'minView' => 'hour',
