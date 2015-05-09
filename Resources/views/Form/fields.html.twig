@@ -1,0 +1,36 @@
+{#
+This file is part of the CampaignChain package.
+
+(c) Sandro Groganz <sandro@campaignchain.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+
+{% block campaignchain_hook_campaignchain_due_widget %}
+    {% javascripts '@clockpicker_js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% stylesheets '@clockpicker_css' %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+
+    {% spaceless %}
+        {% if form.date is defined %}
+            {{ form_widget(form) }}
+        {% else %}
+            {{ form_row(form.days, { 'widget_col': 3}) }}
+            {{ form_row(form.time, { 'widget_col': 3, 'attr': {
+                'class': 'clockpicker'
+            }}) }}
+            {{ form_rest(form) }}
+            <script type="text/javascript">
+                $('.clockpicker').clockpicker({
+                    placement: 'right',
+                    align: 'left',
+                    autoclose: 'true'
+                });
+            </script>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

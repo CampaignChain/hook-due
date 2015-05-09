@@ -14,6 +14,10 @@ class Due
 {
     protected $date;
 
+    protected $days;
+
+    protected $time;
+
     protected $timezone = 'UTC';
 
     /**
@@ -37,6 +41,52 @@ class Due
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set days
+     *
+     * @param \int $days
+     * @return Due
+     */
+    public function setDays($days)
+    {
+        $this->days = $days;
+
+        return $this;
+    }
+
+    /**
+     * Get days
+     *
+     * @return \int
+     */
+    public function getDays()
+    {
+        return $this->days;
+    }
+
+    /**
+     * Set time
+     *
+     * @param \string $time
+     * @return Due
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return \string
+     */
+    public function getTime()
+    {
+        return $this->time;
     }
 
     /**

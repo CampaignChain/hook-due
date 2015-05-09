@@ -1,0 +1,6 @@
+{
+    "name": "campaignchain-hook-due",
+    "dependencies": {
+        "clockpicker": "0.0.7"
+    }
+}

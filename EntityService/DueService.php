@@ -40,17 +40,37 @@ class DueService implements HookServiceTriggerInterface
         $hook = new Due();
 
         if(is_object($entity) && $entity->getId() !== null){
-            $hook->setStartDate($entity->getStartDate());
+            if($entity->getCampaign()->getHasRelativeDates()){
+                $interval = $entity->getCampaign()->getStartDate()->diff(
+                    $entity->getStartDate()
+                );
+                $hook->setDays($interval->format("%a"));
+                $hook->setTime(
+                    $entity->getStartDate()->format('h').':'.$entity->getStartDate()->format('i')
+                );
+            } else {
+                $hook->setStartDate($entity->getStartDate());
+            }
         }
 
         return $hook;
     }
 
     public function processHook($entity, $hook){
-        // TODO: Remove this hack to fix validation issue.
+        // TODO: Remove this hack which fixes a validation issue.
         if(!$hook->getStartDate()){
             $now = new \DateTime('now', new \DateTimeZone($hook->getTimezone()));
             $hook->setStartDate($now);
+        }
+
+        if($entity->getCampaign()->getHasRelativeDates()){
+            $campaignStartDate = $entity->getCampaign()->getStartDate();
+            $hookStartDate = $campaignStartDate->modify('+'.$hook->getDays().' days');
+            $hookStartDate = new \DateTime(
+                $hookStartDate->format('Y-M-d').' '.$hook->getTime().':00'
+            );
+
+            $hook->setStartDate($hookStartDate);
         }
 
         // Update the dates of the entity.

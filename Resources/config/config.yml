@@ -1,0 +1,17 @@
+assetic:
+    bundles:
+        - CampaignChainHookDueBundle
+    assets:
+        clockpicker_js:
+            inputs:
+                - "@CampaignChainHookDueBundle/Resources/public/components/clockpicker/dist/bootstrap-clockpicker.min.js"
+        clockpicker_css:
+            inputs:
+                - "@CampaignChainHookDueBundle/Resources/public/components/clockpicker/dist/bootstrap-clockpicker.min.css"
+twig:
+    form:
+        resources:
+            - 'CampaignChainHookDueBundle:Form:fields.html.twig'
+sp_bower:
+    bundles:
+        CampaignChainHookDueBundle: null
