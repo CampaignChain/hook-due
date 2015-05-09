@@ -117,8 +117,13 @@ class DueType extends AbstractType
                     )
                 ));
         } else {
-            // TODO: Allow only number of days within campaign duration.
             // TODO: Ensure time is not after or before campaign duration
+
+            $campaignInterval = $this->campaign->getStartDate()->diff(
+                $this->campaign->getEndDate()
+            );
+            $campaignDays = (string) $campaignInterval->format("%a");
+
             $builder
                 ->add('days', 'integer', array(
                     'label' => false,
@@ -127,7 +132,9 @@ class DueType extends AbstractType
                         'help_text' => 'Days after start of campaign',
                         'input_group' => array(
                             'append' => '<span class="fa fa-calendar">',
-                        )
+                        ),
+                        'min' => 0,
+                        'max' => $campaignDays,
                     )
                 ))
                 ->add('time', 'text', array(
@@ -136,7 +143,7 @@ class DueType extends AbstractType
                         'help_text' => 'Execution time at that day',
                         'input_group' => array(
                             'append' => '<span class="fa fa-clock-o">',
-                        )
+                        ),
                     )
                 ));
         }
