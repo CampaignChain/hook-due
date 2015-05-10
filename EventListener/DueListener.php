@@ -42,7 +42,7 @@ class DueListener implements EventSubscriberInterface
             $data['campaignchain_hook_campaignchain_due']['execution_choice'] == 'now'
         ){
             unset($data['campaignchain_hook_campaignchain_due']['date']);
-            // TODO: Remove this hack for YMC demo.
+            // TODO: Remove this hack for demo.
 //            $nowDate = new \DateTime('now');
 //
 //            $datetimeUtil = $this->container->get('campaignchain.core.util.datetime');

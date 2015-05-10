@@ -46,7 +46,7 @@ class DueService implements HookServiceTriggerInterface
                 );
                 $hook->setDays($interval->format("%a"));
                 $hook->setTime(
-                    $entity->getStartDate()->format('h').':'.$entity->getStartDate()->format('i')
+                    $entity->getStartDate()->format('H').':'.$entity->getStartDate()->format('i')
                 );
             } else {
                 $hook->setStartDate($entity->getStartDate());
