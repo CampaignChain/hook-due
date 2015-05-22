@@ -36,7 +36,10 @@ class DueType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if(!$this->campaign->getHasRelativeDates()){
+        if(
+            !is_object($this->campaign) ||
+            !$this->campaign->getHasRelativeDates()
+        ){
             // By default, start date is today
             $now = $this->datetime->setUserTimezone(new \DateTime('now'));
             $endDatePicker = null;

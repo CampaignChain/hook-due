@@ -40,7 +40,10 @@ class DueService implements HookServiceTriggerInterface
         $hook = new Due();
 
         if(is_object($entity) && $entity->getId() !== null){
-            if($entity->getCampaign()->getHasRelativeDates()){
+            if(
+                strpos(get_class($entity), 'CoreBundle\Entity\Campaign') === false &&
+                $entity->getCampaign()->getHasRelativeDates()
+            ){
                 $interval = $entity->getCampaign()->getStartDate()->diff(
                     $entity->getStartDate()
                 );
