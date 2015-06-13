@@ -10,17 +10,15 @@
 
 namespace CampaignChain\Hook\DueBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
+use CampaignChain\CoreBundle\Form\Type\HookType;
 use Symfony\Component\Form\FormBuilderInterface;
 use CampaignChain\CoreBundle\Util\DateTimeUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DueType extends AbstractType
+class DueType extends HookType
 {
-    private $campaign;
-
     protected $container;
     protected $datetime;
 
@@ -28,10 +26,6 @@ class DueType extends AbstractType
     {
         $this->container = $container;
         $this->datetime = $this->container->get('campaignchain.core.util.datetime');
-    }
-
-    public function setCampaign($campaign){
-        $this->campaign = $campaign;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)

@@ -72,7 +72,8 @@ class DueService implements HookServiceTriggerInterface
 
         if(
             strpos(get_class($entity), 'CoreBundle\Entity\Operation') === false &&
-            $entity->getCampaign()->getHasRelativeDates()
+            $entity->getCampaign()->getHasRelativeDates() &&
+            $entity->getCampaign()->getStartDate() >= new \DateTime('now')
         ){
             echo get_class($entity).' '.$entity->getId().' has relative dates: '.$entity->getCampaign()->getHasRelativeDates()."\n";
             $campaignStartDate = $entity->getCampaign()->getStartDate();
