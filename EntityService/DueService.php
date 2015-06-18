@@ -51,10 +51,13 @@ class DueService implements HookServiceTriggerInterface
                 $interval = $entity->getCampaign()->getStartDate()->diff(
                     $entity->getStartDate()
                 );
-                $hook->setDays($interval->format("%a"));
-                $hook->setTime(
-                    $entity->getStartDate()->format('H').':'.$entity->getStartDate()->format('i')
-                );
+                $time = $entity->getStartDate()->format('H').':'.$entity->getStartDate()->format('i');
+                $days = $interval->format("%a");
+                if($time != '00:00'){
+                    $days = ++$days;
+                }
+                $hook->setDays($days);
+                $hook->setTime($time);
             }
 
             $hook->setStartDate($entity->getStartDate());
@@ -76,7 +79,11 @@ class DueService implements HookServiceTriggerInterface
             $entity->getStartDate() != $hook->getStartDate()
         ){
             $campaignStartDate = $entity->getCampaign()->getStartDate();
-            $hookStartDate = $campaignStartDate->modify('+'.$hook->getDays().' days');
+            $days = $hook->getDays();
+            if($hook->getTime() != '00:00'){
+                $days = $days-1;
+            }
+            $hookStartDate = $campaignStartDate->modify('+'.$days.' days');
             $hookStartDate = new \DateTime(
                 $hookStartDate->format('Y-M-d').' '.$hook->getTime().':00'
             );
