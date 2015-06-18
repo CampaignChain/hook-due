@@ -152,7 +152,10 @@ class DueService implements HookServiceTriggerInterface
         $hook = $this->getHook($entity);
         return $this->container->get('templating')->render(
             'CampaignChainHookDueBundle::inline.html.twig',
-            array('hook' => $hook)
+            array(
+                'hook' => $hook,
+                'campaign_has_relative_dates' => $entity->getCampaign()->getHasRelativeDates(),
+            )
         );
     }
 
