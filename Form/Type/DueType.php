@@ -125,7 +125,7 @@ class DueType extends HookType
                     'label' => false,
                     'precision' => 0,
                     'attr' => array(
-                        'help_text' => 'Days after start of campaign',
+                        'help_text' => '1-'.$campaignDays.' days after start of campaign',
                         'input_group' => array(
                             'append' => '<span class="fa fa-calendar">',
                         ),
