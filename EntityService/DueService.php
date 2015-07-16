@@ -10,6 +10,7 @@
 
 namespace CampaignChain\Hook\DueBundle\EntityService;
 
+use CampaignChain\CoreBundle\Entity\Hook;
 use CampaignChain\CoreBundle\EntityService\HookServiceTriggerInterface;
 use CampaignChain\Hook\DueBundle\Entity\Due;
 use Doctrine\ORM\EntityManager;
@@ -36,7 +37,7 @@ class DueService implements HookServiceTriggerInterface
 //        return $due;
 //    }
 
-    public function getHook($entity){
+    public function getHook($entity, $mode = Hook::MODE_DEFAULT){
         $hook = new Due();
 
         if(
@@ -44,8 +45,12 @@ class DueService implements HookServiceTriggerInterface
             $entity->getId() !== null
         ){
             if(
+                $mode == Hook::MODE_DEFAULT &&
+                // Operations have no direct relation to a campaign, so exclude them.
                 strpos(get_class($entity), 'CoreBundle\Entity\Operation') === false &&
+                // Don't process Campaigns here.
                 strpos(get_class($entity), 'CoreBundle\Entity\Campaign') === false &&
+                // Check if the Action's campaign has relative dates.
                 $entity->getCampaign()->getHasRelativeDates()
             ){
                 $interval = $entity->getCampaign()->getStartDate()->diff(
