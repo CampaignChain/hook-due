@@ -1,7 +1,7 @@
 {
     "name": "campaignchain/hook-due",
     "description": "Define the due date of an entity.",
-    "keywords": ["due"],
+    "keywords": ["hook","campaignchain"],
     "type": "campaignchain-hook",
     "homepage": "http://www.campaignchain.com",
     "license": "Apache-2.0",
