@@ -109,6 +109,10 @@ class Due
      */
     public function getTimezone()
     {
+        // If time zone is empty, use UTC as default timezone.
+        if(!$this->timezone){
+            $this->timezone = 'UTC';
+        }
         return $this->timezone;
     }
 
