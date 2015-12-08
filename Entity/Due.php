@@ -97,7 +97,10 @@ class Due
      */
     public function setTimezone($timezone)
     {
-        $this->timezone = $timezone;
+        // Keep 'UTC' as default value if $timezone is empty string.
+        if(!empty($timezone)) {
+            $this->timezone = $timezone;
+        }
 
         return $this;
     }
