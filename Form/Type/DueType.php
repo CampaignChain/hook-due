@@ -75,43 +75,50 @@ class DueType extends HookType
                 }
             }
 
-            $builder
-                ->add('date', 'collot_datetime', array(
-    //                'mapped' => false,
-    //                'data' => $dataDue,
-                    'label' => false,
-                    'required' => false,
-                    'constraints' => array(),
-                    'model_timezone' => 'UTC',
-                    'view_timezone' => $this->datetime->getUserTimezone(),
-                    'pickerOptions' => array(
-                        'format' => $this->datetime->getUserDatetimeFormat('datepicker'),
-                        'weekStart' => 0,
-                        'startDate' => $startDatePicker,
-                        'endDate' => $endDatePicker,
-                        'autoclose' => true,
-                        'startView' => 'month',
-                        'minView' => 'hour',
-                        'maxView' => 'decade',
-                        'todayBtn' => false,
-                        'todayHighlight' => true,
-                        'keyboardNavigation' => true,
-                        'language' => 'en',
-                        'forceParse' => true,
-                        'minuteStep' => 5,
-                        'pickerReferer ' => 'default', //deprecated
-                        'pickerPosition' => 'bottom-right',
-                        'viewSelect' => 'hour',
-                        'showMeridian' => false,
-    //                    'initialDate' => $startDatePicker,
-                    ),
-                    'attr' => array(
-                        'help_text' => $helpText,
-                        'input_group' => array(
-                            'append' => '<span class="fa fa-calendar">',
-                        )
-                    )
+            if($this->view == 'rest'){
+                $builder->add('date', 'datetime', array(
+                    'widget' => 'single_text',
+                    'date_format' => 'Y-m-d\TH:i:sP',
                 ));
+            } else {
+                $builder
+                    ->add('date', 'collot_datetime', array(
+                        //                'mapped' => false,
+                        //                'data' => $dataDue,
+                        'label' => false,
+                        'required' => false,
+                        'constraints' => array(),
+                        'model_timezone' => 'UTC',
+                        'view_timezone' => $this->datetime->getUserTimezone(),
+                        'pickerOptions' => array(
+                            'format' => $this->datetime->getUserDatetimeFormat('datepicker'),
+                            'weekStart' => 0,
+                            'startDate' => $startDatePicker,
+                            'endDate' => $endDatePicker,
+                            'autoclose' => true,
+                            'startView' => 'month',
+                            'minView' => 'hour',
+                            'maxView' => 'decade',
+                            'todayBtn' => false,
+                            'todayHighlight' => true,
+                            'keyboardNavigation' => true,
+                            'language' => 'en',
+                            'forceParse' => true,
+                            'minuteStep' => 5,
+                            'pickerReferer ' => 'default', //deprecated
+                            'pickerPosition' => 'bottom-right',
+                            'viewSelect' => 'hour',
+                            'showMeridian' => false,
+                            //                    'initialDate' => $startDatePicker,
+                        ),
+                        'attr' => array(
+                            'help_text' => $helpText,
+                            'input_group' => array(
+                                'append' => '<span class="fa fa-calendar">',
+                            )
+                        )
+                    ));
+            }
         } else {
             // TODO: Ensure time is not after or before campaign duration
 
