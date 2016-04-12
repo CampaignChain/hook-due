@@ -102,9 +102,20 @@ class DueService implements HookServiceTriggerInterface
         $class = get_class($entity);
         if(strpos($class, 'CoreBundle\Entity\Activity') !== false && $entity->getEqualsOperation() == true){
             $operation = $entity->getOperations()[0];
-            $operation->setStartDate($hook->getStartDate());
-            $operation->setEndDate($hook->getEndDate());
-            $operation->setTriggerHook($entity->getTriggerHook());
+            if(is_object($operation)){
+                $operation->setStartDate($hook->getStartDate());
+                $operation->setEndDate($hook->getEndDate());
+                $operation->setTriggerHook($entity->getTriggerHook());
+            } else {
+                throw new \Exception(
+                    'The Activity with ID "'.$entity->getId().'" '
+                    .'does not have a related Operation, although the module '
+                    .'"'.$entity->getActivityModule()->getIdentifier().'" '
+                    .'of bundle '
+                    .'"'.$entity->getActivityModule()->getBundle()->getName().'" '
+                    .'is configured so that the Activity equals the Operation.'
+                );
+            }
         }
 
         return $entity;
