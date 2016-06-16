@@ -19,6 +19,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class DueType extends HookType
 {
     protected $container;
+
+    /** @var DateTimeUtil datetime */
     protected $datetime;
 
     public function __construct(ContainerInterface $container)
@@ -50,7 +52,7 @@ class DueType extends HookType
 
                 $endDateCampaign = $endDatePicker = $this->datetime->formatLocale($this->campaign->getEndDate());
 
-                $helpText = 'Campaign starts '.$startDateCampaign.' and ends '.$endDateCampaign.'.';
+                $helpText = 'Timezone: '.$this->datetime->getUserTimezone();
             } else {
                 $startDatePicker = $this->datetime->formatLocale($now);
             }
