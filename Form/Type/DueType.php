@@ -84,35 +84,12 @@ class DueType extends HookType
                 ));
             } else {
                 $builder
-                    ->add('date', 'collot_datetime', array(
-                        //                'mapped' => false,
-                        //                'data' => $dataDue,
+                    ->add('date', 'campaignchain_datetimepicker', array(
                         'label' => false,
                         'required' => false,
                         'constraints' => array(),
-                        'model_timezone' => 'UTC',
-                        'view_timezone' => $this->datetime->getUserTimezone(),
-                        'pickerOptions' => array(
-                            'format' => $this->datetime->getUserDatetimeFormat('datepicker'),
-                            'weekStart' => 0,
-                            'startDate' => $startDatePicker,
-                            'endDate' => $endDatePicker,
-                            'autoclose' => true,
-                            'startView' => 'month',
-                            'minView' => 'hour',
-                            'maxView' => 'decade',
-                            'todayBtn' => false,
-                            'todayHighlight' => true,
-                            'keyboardNavigation' => true,
-                            'language' => 'en',
-                            'forceParse' => true,
-                            'minuteStep' => 5,
-                            'pickerReferer ' => 'default', //deprecated
-                            'pickerPosition' => 'bottom-right',
-                            'viewSelect' => 'hour',
-                            'showMeridian' => false,
-                            //                    'initialDate' => $startDatePicker,
-                        ),
+                        'start_date' => $startDatePicker,
+                        'end_date' => $endDatePicker,
                         'attr' => array(
                             'help_text' => $helpText,
                             'input_group' => array(
