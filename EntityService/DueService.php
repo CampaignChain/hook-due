@@ -86,7 +86,8 @@ class DueService implements HookServiceTriggerInterface
             }
             $hookStartDate = $campaignStartDate->modify('+'.$days.' days');
             $hookStartDate = new \DateTime(
-                $hookStartDate->format('Y-M-d').' '.$hook->getTime().':00'
+                $hookStartDate->format('Y-M-d').' '.$hook->getTime().':00',
+                new \DateTimeZone($hook->getTimezone())
             );
 
             $hook->setStartDate($hookStartDate);
