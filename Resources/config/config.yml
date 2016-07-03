@@ -23,4 +23,4 @@ sp_bower:
     bundles:
         CampaignChainHookDueBundle:
             asset_dir: "%campaignchain.bower.asset_dir%/campaignchainhookdue"
-            cache: "%campaignchain.bower.asset_dir%/campaignchainhookdue"
+            cache: "%campaignchain.bower.cache_dir%/campaignchainhookdue"
