@@ -22,5 +22,5 @@ twig:
 sp_bower:
     bundles:
         CampaignChainHookDueBundle:
-            asset_dir: "%campaignchain.bower.asset_dir%/campaignchainhookdue"
+            asset_dir: "%campaignchain.bower.asset_dir%"
             cache: "%campaignchain.bower.cache_dir%/campaignchainhookdue"
