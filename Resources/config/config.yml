@@ -11,16 +11,14 @@ assetic:
     assets:
         clockpicker_js:
             inputs:
-                - "%campaignchain.bower.asset_dir%/campaignchainhookdue/clockpicker/dist/bootstrap-clockpicker.min.js"
+                - "@CampaignChainHookDueBundle/Resources/public/components/clockpicker/dist/bootstrap-clockpicker.min.js"
         clockpicker_css:
             inputs:
-                - "%campaignchain.bower.asset_dir%/campaignchainhookdue/clockpicker/dist/bootstrap-clockpicker.min.css"
+                - "@CampaignChainHookDueBundle/Resources/public/components/clockpicker/dist/bootstrap-clockpicker.min.css"
 twig:
     form:
         resources:
             - 'CampaignChainHookDueBundle:Form:fields.html.twig'
 sp_bower:
     bundles:
-        CampaignChainHookDueBundle:
-            asset_dir: "%campaignchain.bower.asset_dir%/campaignchainhookdue"
-            cache: "%campaignchain.bower.cache_dir%/campaignchainhookdue"
+        CampaignChainHookDueBundle: null
