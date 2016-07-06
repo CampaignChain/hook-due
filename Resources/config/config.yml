@@ -21,4 +21,5 @@ twig:
             - 'CampaignChainHookDueBundle:Form:fields.html.twig'
 sp_bower:
     bundles:
-        CampaignChainHookDueBundle: null
+        CampaignChainHookDueBundle:
+            cache: %kernel.cache_dir%/../bower
