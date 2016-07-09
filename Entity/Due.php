@@ -158,4 +158,11 @@ class Due
     {
         return null;
     }
+
+    public function toArray()
+    {
+        return array(
+            'date' => $this->getStartDate()->format(\DateTime::ISO8601),
+        );
+    }
 }
