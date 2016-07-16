@@ -17,8 +17,13 @@
 
 namespace CampaignChain\Hook\DueBundle;
 
+use CampaignChain\Hook\DueBundle\DependencyInjection\CampaignChainHookDueExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class CampaignChainHookDueBundle extends Bundle
 {
+    public function getContainerExtension()
+    {
+        return new CampaignChainHookDueExtension();
+    }
 }
