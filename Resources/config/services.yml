@@ -17,7 +17,7 @@ parameters:
 services:
     campaignchain.hook.campaignchain.due:
         class: CampaignChain\Hook\DueBundle\EntityService\DueService
-        arguments: [ @doctrine.orm.entity_manager, @service_container ]
+        arguments: [ @doctrine, @service_container ]
     campaignchain.hook.form.type.campaignchain.due:
         class: CampaignChain\Hook\DueBundle\Form\Type\DueType
         arguments: [ @service_container ]
