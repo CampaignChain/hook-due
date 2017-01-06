@@ -24,7 +24,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Inflector\Inflector;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class DueService implements HookServiceTriggerInterface
+class DueService extends HookServiceTriggerInterface
 {
     protected $em;
     protected $container;
@@ -126,7 +126,9 @@ class DueService implements HookServiceTriggerInterface
             }
         }
 
-        return $entity;
+        $this->setEntity($entity);
+
+        return true;
     }
 
     public function arrayToObject($hookData){
