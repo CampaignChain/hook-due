@@ -23,9 +23,8 @@ assetic:
             inputs:
                 - "%kernel.root_dir%/../web/vendor/campaignchain/hook-due/clockpicker/dist/bootstrap-clockpicker.min.css"
 twig:
-    form:
-        resources:
-            - 'CampaignChainHookDueBundle:Form:fields.html.twig'
+    form_themes:
+        - 'CampaignChainHookDueBundle:Form:fields.html.twig'
 sp_bower:
     bundles:
         CampaignChainHookDueBundle:
