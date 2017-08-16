@@ -21,6 +21,8 @@ services:
     campaignchain.hook.form.type.campaignchain.due:
         class: CampaignChain\Hook\DueBundle\Form\Type\DueType
         arguments: [ '@service_container' ]
+        tags:
+            - { name: form.type }
     campaignchain.hook.listener.campaignchain.due:
         class: CampaignChain\Hook\DueBundle\EventListener\DueListener
         arguments: [ '@service_container' ]

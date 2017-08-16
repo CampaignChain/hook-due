@@ -17,6 +17,7 @@
 
 namespace CampaignChain\Hook\DueBundle\Form\Type;
 
+use CampaignChain\CoreBundle\Form\Type\DateTimePickerType;
 use CampaignChain\CoreBundle\Form\Type\HookType;
 use Symfony\Component\Form\FormBuilderInterface;
 use CampaignChain\CoreBundle\Util\DateTimeUtil;
@@ -91,7 +92,7 @@ class DueType extends HookType
                 ));
             } else {
                 $builder
-                    ->add('date', 'campaignchain_datetimepicker', array(
+                    ->add('date', DateTimePickerType::class, array(
                         'label' => false,
                         'required' => false,
                         'constraints' => array(),
@@ -151,7 +152,7 @@ class DueType extends HookType
             ]);
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'campaignchain_hook_campaignchain_due';
     }
