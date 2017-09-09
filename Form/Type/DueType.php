@@ -22,7 +22,7 @@ use CampaignChain\CoreBundle\Form\Type\HookType;
 use Symfony\Component\Form\FormBuilderInterface;
 use CampaignChain\CoreBundle\Util\DateTimeUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DueType extends HookType
 {
@@ -39,6 +39,8 @@ class DueType extends HookType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->setOptions($options);
+
         if(
             !is_object($this->campaign) ||
             !$this->campaign->getHasRelativeDates()
@@ -144,8 +146,10 @@ class DueType extends HookType
             ));
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
+
         $resolver
             ->setDefaults([
                 'validation_groups' => false,
