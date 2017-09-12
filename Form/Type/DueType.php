@@ -75,8 +75,8 @@ class DueType extends HookType
                         ->add('execution_choice', 'choice', array(
                             'label'     => false,
                             'choices' => array(
-                                'now' => 'Now',
-                                'schedule' => 'Schedule'
+                                'Now' => 'now',
+                                'Schedule' => 'schedule'
                             ),
                             'mapped' => false,
                             'expanded' => true,
@@ -119,7 +119,7 @@ class DueType extends HookType
             $builder
                 ->add('days', 'integer', array(
                     'label' => false,
-                    'precision' => 0,
+                    'scale' => 0,
                     'attr' => array(
                         'help_text' => '1-'.$campaignDays.' days after start of campaign',
                         'input_group' => array(
