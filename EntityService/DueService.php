@@ -26,15 +26,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class DueService extends HookServiceTriggerInterface
 {
-    protected $em;
-    protected $container;
-
-    public function __construct(ManagerRegistry $managerRegistry, ContainerInterface $container)
-    {
-        $this->container = $container;
-        $this->em = $managerRegistry->getManager();
-    }
-
 //    public function newObject($entityClass, $entityId, $formData){
 //        $due = new Due();
 //        $due->setEntityId($entityId);
